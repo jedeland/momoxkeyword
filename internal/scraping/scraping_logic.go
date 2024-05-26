@@ -1,9 +1,7 @@
 package scraping
 
 import (
-	"encoding/json"
 	"fmt"
-
 	"github.com/gocolly/colly"
 )
 
@@ -13,17 +11,15 @@ func DetermineUrls() {
 
 
 	collyScraper.OnHTML("main", func(e *colly.HTMLElement) {
-		println("Printing out main!")
+		fmt.Printf("Printing out main!")
+		bodyOutput := e.ChildText("div.mw-body-content")
+		fmt.Println(bodyOutput)
 		
 	})
 	collyScraper.OnRequest(func(r *colly.Request){
 		fmt.Println("Visting", r.URL.String())
 	})
 
-	collyScraper.OnScraped(func(r *colly.Response){
-		fmt.Println(e)
-		
-	})
 	collyScraper.Visit("https://en.wikipedia.org/wiki/Jiaozi")
 
 
