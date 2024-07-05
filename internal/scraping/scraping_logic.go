@@ -6,7 +6,7 @@ import (
 )
 
 
-func DetermineUrls() {
+func DetermineUrlsTest() {
 	collyScraper := colly.NewCollector()
 
 
